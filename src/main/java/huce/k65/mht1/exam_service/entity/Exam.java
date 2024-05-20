@@ -48,14 +48,14 @@ public class Exam {
     @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, targetEntity = AccessGroup.class)
     private List<AccessGroup> accessGroups;
 
-    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, targetEntity = Part.class)
+    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, targetEntity = Part.class, orphanRemoval = true)
     private List<Part> parts;
 
     @OneToOne(cascade = CascadeType.ALL, targetEntity = User.class, fetch = FetchType.LAZY)
     @JoinColumn(name = "creator_id", referencedColumnName = "user_id")
     private User creator;
 
-    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, targetEntity = ExamResult.class)
+    @OneToMany(mappedBy = "exam", cascade = CascadeType.ALL, targetEntity = ExamResult.class, orphanRemoval = true)
     private List<ExamResult> examResult;
 
     @Basic(fetch = FetchType.LAZY)

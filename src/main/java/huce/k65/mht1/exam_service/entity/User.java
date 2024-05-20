@@ -28,7 +28,7 @@ public class User {
     @SequenceGenerator(name = "e_user_seq")
     @Column(name = "user_id", nullable = false)
     @JdbcTypeCode(SqlTypes.BIGINT)
-    private Long user_id;
+    private Long userId;
 
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "first_name", nullable = false, length = 50)

@@ -39,8 +39,8 @@ public class QuestionBank {
     @JdbcTypeCode(SqlTypes.VARCHAR)
     private String note;
 
-    @OneToMany(mappedBy = "questionBank" , fetch = FetchType.LAZY, cascade = CascadeType.ALL,
-            targetEntity = Question.class)
+    @OneToMany(mappedBy = "questionBank", cascade = CascadeType.ALL, targetEntity = Question.class,
+            orphanRemoval = true)
     private List<Question> questions;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = Part.class)
