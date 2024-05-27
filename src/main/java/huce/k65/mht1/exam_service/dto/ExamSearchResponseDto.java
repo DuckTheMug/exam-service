@@ -1,39 +1,51 @@
 package huce.k65.mht1.exam_service.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
+
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.time.Duration;
 import java.util.List;
 
 /**
  * DTO for {@link huce.k65.mht1.exam_service.entity.Exam}
  */
-public record ExamSearchResponseDto(Long examId, String examName, Duration examDuration, String note,
-                                    List<AccessGroupDto> accessGroups, List<PartDto> parts, UserDto creator,
-                                    List<ExamResultDto> examResult, Integer repeatableLimit, Integer repeatableCount,
-                                    Boolean reviewableAfterFinishFlag) implements Serializable {
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Accessors(chain = true)
+public class ExamSearchResponseDto implements Serializable {
+    private Long examId;
+    private String examName;
+    private Duration examDuration;
+    private String note;
+    private List<AccessGroupDto> accessGroups;
+    private UserDto creator;
+    private Integer repeatableLimit;
+    private Integer repeatableCount;
+    private Boolean reviewableAfterFinishFlag = false;
+
     /**
      * DTO for {@link huce.k65.mht1.exam_service.entity.AccessGroup}
      */
-    public record AccessGroupDto(Long accessGroupId, String accessGroupName, Timestamp accessStartDateAndTime,
-                                 Timestamp accessEndDateAndTime) implements Serializable {
-    }
-
-    /**
-     * DTO for {@link huce.k65.mht1.exam_service.entity.Part}
-     */
-    public record PartDto(Long partId, String partName) implements Serializable {
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Accessors(chain = true)
+    public static class AccessGroupDto implements Serializable {
+        private String accessGroupName;
     }
 
     /**
      * DTO for {@link huce.k65.mht1.exam_service.entity.User}
      */
-    public record UserDto(Long userId, String fullName) implements Serializable {
-    }
-
-    /**
-     * DTO for {@link huce.k65.mht1.exam_service.entity.ExamResult}
-     */
-    public record ExamResultDto(Long examResultId, Float totalScore) implements Serializable {
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    @Accessors(chain = true)
+    public static class UserDto implements Serializable {
+        private String fullName;
     }
 }
