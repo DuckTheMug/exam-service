@@ -76,5 +76,5 @@ public class Exam {
     @Basic(fetch = FetchType.LAZY)
     @Column(name = "deleted_flag", nullable = false, columnDefinition = "boolean default false")
     @JdbcTypeCode(SqlTypes.BOOLEAN)
-    private Boolean deleted_flag = false;
+    private Boolean deletedFlag = false;
 }
